@@ -1,5 +1,3 @@
-e%%
-load('batteryDischargeData');
 %%
 
 fts_batt = trainData(1)
@@ -16,17 +14,8 @@ ylabel("ss")
 title("internal resistance")
 
 %%
-
-fid = fopen('output.json', 'w');  % Open or create a new JSON file
-if fid == -1
-    error('Cannot create JSON file');
-end
-
-% Write the JSON data to the file
-fprintf(fid, jsonData);
-fclose(fid);
-
-% Display success message (optional)
-disp('JSON file has been created successfully.');
-
-test
+jsonStr = jsonencode(fts_batt);
+%%
+fileID = fopen('firstbatt.json', 'w');
+fprintf(fileID, '%s', jsonStr);
+fclose(fileID);
