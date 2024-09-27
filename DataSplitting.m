@@ -19,3 +19,13 @@ jsonStr = jsonencode(fts_batt);
 fileID = fopen('firstbatt.json', 'w');
 fprintf(fileID, '%s', jsonStr);
 fclose(fileID);
+
+%%
+
+ class(fts_batt.cycles(2).t)
+%%
+ jsontry = jsonencode(num2cell(fts_batt.cycles(2).t));
+ fileID = fopen('jsontry.json', 'w');
+fprintf(fileID, '%s', jsonStr);
+fclose(fileID);
+
